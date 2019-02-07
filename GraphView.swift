@@ -28,11 +28,11 @@ import simd
 
 #if os(iOS)
     import UIKit
-    public      typealias View       = UIView
-    public      typealias Color      = UIColor
-    fileprivate typealias Label      = UILabel
-    fileprivate typealias Font       = UIFont
-    fileprivate typealias BezierPath = UIBezierPath
+//    public      typealias View       = UIView
+//    public      typealias Color      = UIColor
+//    fileprivate typealias Label      = UILabel
+//    fileprivate typealias Font       = UIFont
+//    fileprivate typealias BezierPath = UIBezierPath
     fileprivate typealias Point      = CGPoint
     fileprivate typealias Rect       = CGRect
 
@@ -44,30 +44,30 @@ import simd
     }
 #elseif os(OSX)
     import Cocoa
-    public      typealias View       = NSView
-    public      typealias Color      = NSColor
-    fileprivate typealias Label      = NSTextField
-    fileprivate typealias Font       = NSFont
-    fileprivate typealias BezierPath = NSBezierPath
+//    public      typealias View       = NSView
+//    public      typealias Color      = NSColor
+//    fileprivate typealias Label      = NSTextField
+//    fileprivate typealias Font       = NSFont
+//    fileprivate typealias BezierPath = NSBezierPath
     fileprivate typealias Point      = NSPoint
     fileprivate typealias Rect       = NSRect
-
-    extension NSView {
-        func setNeedsDisplay() {
-            setNeedsDisplay(bounds)
-        }
-    }
-
-    extension NSTextField {
-        var text : String {
-            get {
-                return stringValue
-            }
-            set {
-                stringValue = newValue
-            }
-        }
-    }
+//
+//    extension NSView {
+//        func setNeedsDisplay() {
+//            setNeedsDisplay(bounds)
+//        }
+//    }
+//
+//    extension NSTextField {
+//        var text : String {
+//            get {
+//                return stringValue
+//            }
+//            set {
+//                stringValue = newValue
+//            }
+//        }
+//    }
 
     extension CVDisplayLink {
         func invalidate() {
@@ -1135,7 +1135,7 @@ fileprivate class _MetalGraphView: View, RenderCycleObserver {
         setNeedsDisplay()
     }
 
-    fileprivate override func setNeedsDisplay() {
+	@objc override func setNeedsDisplay() {
         needsRedrawMutex.with { needsRedraw = true }
 
         super.setNeedsDisplay()
